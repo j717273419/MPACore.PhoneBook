@@ -1,23 +1,25 @@
 ﻿(function() {
    
     $(function() {
-      
-        var _userService = abp.services.app.user;
 
+
+        console.log("abpc");
         var _$personsTable = $("#PersonsTable");
 
         var _personService = abp.services.app.person;
+     
+        console.log(_personService);
+        debugger;
+        var dataTable = _$personsTable.DataTable({
 
-
-        var dataTable = _$personsTable.dataTable({
             paging: true,
             serverSide: true,
             processing: true,
             listAction: {
-                ajaxFunction: _personService.getPagedPersonAsync,
+                ajaxFunction: _personService.getPagedPerson,
                 inputFilter: function() {
                     return {
-                        filter: $("#PersonTableFilter").val(),
+                        filter: $("#PersonTableFilter").val()
 
                     };
                 }

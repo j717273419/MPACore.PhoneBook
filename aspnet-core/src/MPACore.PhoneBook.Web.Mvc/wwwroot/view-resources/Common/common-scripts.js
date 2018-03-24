@@ -874,7 +874,9 @@ var app = app || {};
 
     $.extend(true, $.fn.dataTable.defaults, {
         ajax: function (requestData, callbackFunction, settings) {
+           
             if (!settings) {
+                
                 return;
             }
 
