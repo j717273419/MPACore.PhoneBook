@@ -1,5 +1,5 @@
 ﻿(function() {
-   
+
     $(function() {
 
 
@@ -7,11 +7,10 @@
         var _$personsTable = $("#PersonsTable");
 
         var _personService = abp.services.app.person;
-     
-        console.log(_personService);
-        debugger;
-        var dataTable = _$personsTable.DataTable({
 
+        console.log(_personService);
+        //   debugger;
+        var dataTable = _$personsTable.DataTable({
             paging: true,
             serverSide: true,
             processing: true,
