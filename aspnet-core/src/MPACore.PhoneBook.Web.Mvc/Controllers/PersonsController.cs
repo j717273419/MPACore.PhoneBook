@@ -18,11 +18,11 @@ namespace MPACore.PhoneBook.Web.Controllers
             _personAppService = personAppService;
         }
 
-        public async Task<IActionResult> Index(GetPersonInput input)
+        public async Task<IActionResult> Index()
         {
             
-     var dtos=   await    _personAppService.GetPagedPersonAsync(input);
-            return View(dtos);
+  //   var dtos=   await    _personAppService.GetPagedPersonAsync(input);
+            return View();
         }
     }
 }

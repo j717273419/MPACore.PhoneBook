@@ -45,6 +45,7 @@
         <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/animate.css/animate.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/datatables-1.10/jquery.dataTables.min.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
         <link href="~/css/themes/all-themes.css" rel="stylesheet" asp-append-version="true" />
@@ -149,6 +150,7 @@
     </section>
 
     <environment names="Development">
+
         <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
@@ -163,6 +165,10 @@
         <script src="~/lib/jquery-slimscroll/jquery.slimscroll.js" asp-append-version="true"></script>
         <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>
         <script src="~/lib/push.js/push.js" asp-append-version="true"></script>
+        <script src="~/lib/datatables-1.10/datatables.all.min.js" asp-append-version="true"></script>
+        <script src="~/lib/datatables-1.10/plugins/bootstrap/datatables.bootstrap.js" asp-append-version="true"></script>
+         
+
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
@@ -171,12 +177,11 @@
         <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
         <script src="~/js/admin.js"></script>
         <script src="~/js/main.js" asp-append-version="true"></script>
-        <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
-
+         <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
         @if (SignalRFeature.IsAvailable && !SignalRFeature.IsAspNetCore)
-        {
-            <script src="~/lib/signalr/jquery.signalR.js" asp-append-version="true"></script>
-        }
+    {
+        <script src="~/lib/signalr/jquery.signalR.js" asp-append-version="true"></script>
+}
     </environment>
 
     <environment names="Staging,Production">
@@ -184,15 +189,22 @@
     </environment>
 
     <script>
-    // Localizing momentjs
-    moment.locale('@CultureInfo.CurrentUICulture.Name');
+        // Localizing momentjs
+        moment.locale('@CultureInfo.CurrentUICulture.Name');
     </script>
 
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
     <script src="~/AbpServiceProxies/GetAll?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
     <script src="~/AbpScripts/GetScripts?v=@(AppTimes.StartupTime.Ticks)" type="text/javascript"></script>
+    
 
-    @if (SignalRFeature.IsAvailable)
+<script type="text/javascript">
+    abp.localization.currentCulture = $.extend({}, abp.localization.currentCulture, { displayNameEnglish: '@CultureInfo.CurrentUICulture.EnglishName' });
+
+
+</script>
+
+@if (SignalRFeature.IsAvailable)
     {
         <!-- SignalR scripts -->
         if (SignalRFeature.IsAspNetCore)
@@ -206,6 +218,8 @@
             <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr.js" type="text/javascript"></script>
         }
     }
+<script src="~/view-resources/Common/common-scripts.js" asp-append-version="true"></script>
+<script src="~/view-resources/Common/app-common-scripts.js" asp-append-version="true"></script>
 
     @WebResourceManager.RenderScripts()
 

@@ -1,6 +1,6 @@
 ﻿(function() {
     $(function() {
-
+        
         var _userService = abp.services.app.user;
         var _$modal = $('#UserCreateModal');
         var _$form = _$modal.find('form');
