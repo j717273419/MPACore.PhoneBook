@@ -2,7 +2,7 @@
 @using Abp.Authorization.Users
 @using MPACore.PhoneBook.PhoneBooks.Dtos
 @using MPACore.PhoneBook.Web.Startup
-@model Abp.Application.Services.Dto.PagedResultDto<PersonListDto>
+@model MPACore.PhoneBook.Web.Models.Persons.PersonsViewModel
 @{
     ViewBag.CurrentPageName = PageNames.Persons; // The menu item will be active for this page.
 }
@@ -33,18 +33,18 @@
                 </ul>
             </div>
             <div class="body table-responsive">
+          
                 <div class="row ">
-                    <input type="text" id="UsersTableFilter" class="form-control m-input" placeholder="@L("SearchWithThreeDot")" >
-
+                 
                     <table id="PersonsTable" class="display table table-striped table-bordered table-hover  nowrap">
                         <thead>
                         <tr>
                             <th>操作</th>
-                            
+
                             <th>@L("Name")</th>
-                         
+
                             <th>@L("EmailAddress")</th>
-                          
+
                             <th>@L("Address")</th>
                         </tr>
                         </thead>
@@ -53,28 +53,12 @@
 
                 </div>
 
-                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" data-toggle="modal" data-target="#UserCreateModal">
+                <button type="button" id="CreateNewPersonButton" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right">
                     <i class="material-icons">add</i>
                 </button>
+
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="UserCreateModal" tabindex="-1" role="dialog" aria-labelledby="UserCreateModalLabel" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">
-                    <span>@L("CreateNewUser")</span>
-                </h4>
-            </div>
-             
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="UserEditModal" tabindex="-1" role="dialog" aria-labelledby="UserEditModalLabel" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        </div>
-    </div>
-</div>
+ 

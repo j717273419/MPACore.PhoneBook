@@ -8,7 +8,19 @@
 
         var _personService = abp.services.app.person;
 
-        console.log(_personService);
+
+        var _createOrEditModal = new app.ModalManager({
+            viewUrl: abp.appPath + 'Persons/CreateOrEditModal',
+            scriptUrl: abp.appPath + 'view-resources/Views/Persons/_CreateOrEditModal.js',
+            modalClass: 'CreateOrEditPersonModal'
+        });
+
+
+
+
+
+
+   //     console.log(_personService);
         //   debugger;
         var dataTable = _$personsTable.DataTable({
             paging: true,
@@ -116,6 +128,11 @@
             dataTable.ajax.reload();
         }
 
+   
+        $('#CreateNewPersonButton').click(function () {
+            //console.log("ddd");
+            _createOrEditModal.open();
+        });
 
     });
 
